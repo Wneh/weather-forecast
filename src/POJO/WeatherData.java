@@ -40,11 +40,11 @@ public class WeatherData {
 		this.referenceTime = referenceTime;
 	}
 
-//	public ArrayList<TimeSerie> getTimeseries() {
-//		return timeseries;
-//	}
-//
-//	public void setTimeseries(ArrayList<TimeSerie> timeseries) {
-//		this.timeseries = timeseries;
-//	}
+	public ArrayList<TimeSerie> getTimeseries() {
+		return timeseries;
+	}
+
+	public void setTimeseries(ArrayList<TimeSerie> timeseries) {
+		this.timeseries = timeseries;
+	}
 }

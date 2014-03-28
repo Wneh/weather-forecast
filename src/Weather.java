@@ -12,5 +12,11 @@ public class Weather {
 		WeatherData wd = df.getWeather();
 		
 		System.out.println(wd);
+		System.out.println();
+		
+		MovingAverage ma = new MovingAverage();
+		
+		ma.calculate(wd);		
+		
 	}
 }

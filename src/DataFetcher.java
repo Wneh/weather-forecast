@@ -23,7 +23,7 @@ public class DataFetcher {
 	public WeatherData getWeather(){
 		String response = apiCall("http://opendata-download-metfcst.smhi.se/api/category/pmp1g/version/1/geopoint/lat/58.59/lon/16.18/data.json");
 		
-		System.out.println(response);
+//		System.out.println(response);
 		return this.jsonToPojo(response, WeatherData.class);
 	}
 	
