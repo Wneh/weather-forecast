@@ -60,8 +60,15 @@ public class MovingAverage {
 	public ArrayList<TrendPoint> detectTrends(ArrayList<Double> shortSerie, ArrayList<Double> longSerie){
 		ArrayList<TrendPoint> result = new ArrayList<TrendPoint>();
 		
-		
-		boolean nextIsRise = shortSerie.get(0) < longSerie.get(0) ? true : false;
+		boolean nextIsRise = false;
+		//Must check if we should start on negative or positive
+		for(int i = 0; i < shortSerie.size(); i++){
+			if(!shortSerie.get(i).equals(longSerie.get(i))){
+				System.out.println("Starting on index: " + i);
+				nextIsRise = shortSerie.get(i) < longSerie.get(i) ? true : false;
+				break;
+			}
+		}
 		
 		for(int i = 0; i < shortSerie.size(); i++){
 			if(nextIsRise && (shortSerie.get(i) > longSerie.get(i))){

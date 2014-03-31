@@ -29,7 +29,7 @@ public class TrendPoint {
 	}
 	
 	public String toString(){
-		return "index: " + this.index + ", trend: " + this.trend;
+		return "index: " + this.index + ", trend: " + this.trend + "\n";
 	}
 	
 }
