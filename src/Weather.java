@@ -16,7 +16,9 @@ public class Weather {
 		
 		MovingAverage ma = new MovingAverage();
 		
-		ma.calculate(wd);		
+		ma.calculate(wd);	
+		
+		
 		
 	}
 }
