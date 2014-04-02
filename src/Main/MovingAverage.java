@@ -1,3 +1,4 @@
+package Main;
 import java.util.ArrayList;
 
 import POJO.TimeSerie;
@@ -12,12 +13,13 @@ public class MovingAverage {
 	 */
 	public static final int SHORT = 2;
 	public static final int LONG = 3;
+
 	
 	public MovingAverage(){
 		
 	}
 	
-	public void calculate(WeatherData wd){
+	public ArrayList<TrendPoint> calculate(WeatherData wd){
 		//Genenarate the arraylist with moving averages
 		ArrayList<Double> shortAv = average(wd.getTimeseries(),SHORT);
 		System.out.println(shortAv);
@@ -28,6 +30,8 @@ public class MovingAverage {
 		System.out.println("Trends:");
 		ArrayList<TrendPoint> trends = this.detectTrends(shortAv, longAv);
 		System.out.println(trends);
+		
+		return trends;
 	}
 	
 	private ArrayList<Double> average(ArrayList<TimeSerie> ts, int averageSize){
@@ -72,11 +76,11 @@ public class MovingAverage {
 		
 		for(int i = 0; i < shortSerie.size(); i++){
 			if(nextIsRise && (shortSerie.get(i) > longSerie.get(i))){
-				result.add(new TrendPoint(TrendPoint.Trend.POSITIVE,i));
+				result.add(new TrendPoint(TrendPoint.Trend.NEGATIVE,i));
 				nextIsRise = false;
 			} 
 			else if(!nextIsRise && (shortSerie.get(i) < longSerie.get(i))){
-				result.add(new TrendPoint(TrendPoint.Trend.NEGATIVE,i));
+				result.add(new TrendPoint(TrendPoint.Trend.POSITIVE,i));
 				nextIsRise = true;
 			}
 		}
