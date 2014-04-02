@@ -5,5 +5,7 @@
 	<classpathentry kind="lib" path="lib/jackson-annotations-2.0.4.jar"/>
 	<classpathentry kind="lib" path="lib/jackson-core-2.0.4.jar"/>
 	<classpathentry kind="lib" path="lib/jackson-databind-2.0.4.jar"/>
+	<classpathentry kind="lib" path="lib/jfreechart-1.0.17.jar"/>
+	<classpathentry kind="lib" path="lib/jcommon-1.0.21.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

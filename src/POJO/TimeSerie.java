@@ -30,8 +30,16 @@ public class TimeSerie {
 				", gust: " + gust + ", pit: " + pit + ", pis: " +pis + ", pcat: " + pcat;
 	}
 	
-	public int getClockTime(){
-		return this.validTime.get(Calendar.HOUR_OF_DAY);
+	public String getClockTime(){
+		String result = "";
+		int hour = this.validTime.get(Calendar.HOUR_OF_DAY);
+		
+		if(hour < 10){
+			result = "0";
+		}
+	
+		result += hour+":00";
+		return result;
 	}
 	
 	public Calendar getValidTime() {
