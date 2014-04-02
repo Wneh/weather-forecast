@@ -31,6 +31,7 @@ public class Weather {
 		
 		System.out.println(b.generateSentence());
 		
+		//Create a chart for some visial feedback
         final Chart demo = new Chart("Weather Forecast",wd);
         demo.pack();
         RefineryUtilities.centerFrameOnScreen(demo);
