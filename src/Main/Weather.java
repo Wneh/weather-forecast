@@ -25,6 +25,8 @@ public class Weather {
 		//Generate a forecast
 		Basic b = new Basic(wd,trends);
 		
+		System.out.println("");
+		
 		System.out.println(b.generateSentence());
 		
 	}

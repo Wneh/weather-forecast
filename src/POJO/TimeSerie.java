@@ -1,10 +1,13 @@
 package POJO;
 
-import java.util.Date;
+//import java.sql.Date;
+
+import java.util.Calendar;
+//import java.util.Date;
 
 public class TimeSerie {
 
-	private Date validTime;
+	private Calendar validTime;
 	private double msl;
 	private double t;
 	private double vis;
@@ -27,10 +30,14 @@ public class TimeSerie {
 				", gust: " + gust + ", pit: " + pit + ", pis: " +pis + ", pcat: " + pcat;
 	}
 	
-	public Date getValidTime() {
+	public int getClockTime(){
+		return this.validTime.get(Calendar.HOUR_OF_DAY);
+	}
+	
+	public Calendar getValidTime() {
 		return validTime;
 	}
-	public void setValidTime(Date validTime) {
+	public void setValidTime(Calendar validTime) {
 		this.validTime = validTime;
 	}
 	public double getMsl() {
