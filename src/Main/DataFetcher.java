@@ -22,7 +22,8 @@ public class DataFetcher {
 	}
 	
 	public WeatherData getWeather(){
-		String response = apiCall("http://opendata-download-metfcst.smhi.se/api/category/pmp1g/version/1/geopoint/lat/58.59/lon/16.18/data.json");
+		//Stockholm is the current location
+		String response = apiCall("http://opendata-download-metfcst.smhi.se/api/category/pmp1.5g/version/1/geopoint/lat/59.32752/lon/18.055037/data.json");
 		
 //		System.out.println(response);
 		return this.jsonToPojo(response, WeatherData.class);

@@ -66,15 +66,17 @@ public class MovingAverage {
 		
 		boolean nextIsRise = false;
 		//Must check if we should start on negative or positive
+		int startPos = 0;
 		for(int i = 0; i < shortSerie.size(); i++){
 			if(!shortSerie.get(i).equals(longSerie.get(i))){
 				System.out.println("Starting on index: " + i);
 				nextIsRise = shortSerie.get(i) < longSerie.get(i) ? true : false;
+				startPos = i;
 				break;
 			}
 		}
 		
-		for(int i = 0; i < shortSerie.size(); i++){
+		for(int i = startPos; i < shortSerie.size(); i++){
 			if(nextIsRise && (shortSerie.get(i) > longSerie.get(i))){
 				result.add(new TrendPoint(TrendPoint.Trend.NEGATIVE,i));
 				nextIsRise = false;

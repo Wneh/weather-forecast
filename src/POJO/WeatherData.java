@@ -15,6 +15,25 @@ public class WeatherData {
 	public String toString(){
 		return "Lat: " + lat + "\nLong: " + lon + "\nReferenceTime: " + referenceTime + "\ntimeseries: " + timeseries;
 	}
+	
+	public int getMaxMinTempTrendIndex(boolean max,int start,int stop){
+		double currentMax = 0;
+		int index = 0;
+		for(int i = start; i <= stop; i++){
+			if(max){
+				if(Math.max(currentMax, timeseries.get(i).getT()) > currentMax){
+					currentMax = timeseries.get(i).getT();
+					index = i;
+				}
+			} else {
+				if(Math.min(currentMax, timeseries.get(i).getT()) < currentMax){
+					currentMax = timeseries.get(i).getT();
+					index = i;
+				}
+			}
+		}
+		return index;
+	}
 
 	public double getLat() {
 		return lat;

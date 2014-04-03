@@ -25,14 +25,14 @@ public class TimeSerie {
 	private double pcat;
 	
 	public String toString(){
-		return "\nvalidTime: " + validTime + ", msl: " + msl + ", t:" + t + ", vis: " + vis + ", wd: " + wd +
+		return "\nvalidTime: " + validTime.getTime() + ", msl: " + msl + ", t:" + t + ", vis: " + vis + ", wd: " + wd +
 				", ws: " + ws + ", r: " + r + ", tstm: " + tstm + ", tcc: " + tcc + ", lcc: " + lcc + 
 				", gust: " + gust + ", pit: " + pit + ", pis: " +pis + ", pcat: " + pcat;
 	}
 	
 	public String getClockTime(){
 		String result = "";
-		int hour = this.validTime.get(Calendar.HOUR_OF_DAY);
+		int hour = this.validTime.get(Calendar.HOUR_OF_DAY)+2;
 		
 		if(hour < 10){
 			result = "0";
