@@ -25,17 +25,17 @@ public class Basic {
 		System.out.println("First: " + first);
 		//TimeSerie second = this.wd.getTimeseries().get(firstTrend.getIndex());
 		//Some basic text
-		sb.append("At ").append(first.getClockTime()).append(" the temperature will be ").append(first.getT()).append(" Celsius");
+		sb.append("At ").append(first.getClockTime()).append(" the temperature will be ").append(first.getT()).append(" ° Celsius");
 		//Add if it will increase or decrease in temperature
 		if(firstTrend.getTrend() == TrendPoint.Trend.POSITIVE){
 			int maxMinTrendIndex = wd.getMaxMinTempTrendIndex(true,0, firstTrend.getIndex());
 			sb.append(" and increase to ").append(wd.getTimeseries().get(maxMinTrendIndex).getT())
-			  .append(" Celsius at ").append(wd.getTimeseries().get(maxMinTrendIndex).getClockTime());
+			  .append(" ° Celsius at ").append(wd.getTimeseries().get(maxMinTrendIndex).getClockTime());
 		}
 		else {
 			int maxMinTrendIndex = wd.getMaxMinTempTrendIndex(true,0, firstTrend.getIndex());
 			sb.append(" and decrease to ").append(wd.getTimeseries().get(maxMinTrendIndex).getT())
-			  .append(" Celsius at ").append(wd.getTimeseries().get(maxMinTrendIndex).getClockTime());
+			  .append(" ° Celsius at ").append(wd.getTimeseries().get(maxMinTrendIndex).getClockTime());
 		}
 		return sb.toString();		
 	}

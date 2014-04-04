@@ -13,28 +13,40 @@ public class MovingAverage {
 	 */
 	public static final int SHORT = 2;
 	public static final int LONG = 3;
+	
+	public ArrayList<TrendPoint> tempTrend;
+	public ArrayList<TrendPoint> windTrend;
 
 	
 	public MovingAverage(){
 		
 	}
 	
-	public ArrayList<TrendPoint> calculate(WeatherData wd){
-		//Genenarate the arraylist with moving averages
-		ArrayList<Double> shortAv = average(wd.getTimeseries(),SHORT);
-		System.out.println(shortAv);
-		ArrayList<Double> longAv = average(wd.getTimeseries(),LONG);
-		System.out.println(longAv);
+	public void calculate(WeatherData wd){
+		//Genenarate the arraylist with moving averages for temperature
+		System.out.println("Temperature average:");
+		ArrayList<Double> shortAvTemp = averageTemp(wd.getTimeseries(),SHORT);
+		System.out.println(shortAvTemp);
+		ArrayList<Double> longAvTemp = averageTemp(wd.getTimeseries(),LONG);
+		System.out.println(longAvTemp);
+		
+		//Wind average
+		System.out.println("Wind average");
+		ArrayList<Double> shortAvWind = averageWind(wd.getTimeseries(),SHORT);
+		System.out.println(shortAvWind);
+		ArrayList<Double> longAvWind = averageWind(wd.getTimeseries(), LONG);
 		
 		//Trends
-		System.out.println("Trends:");
-		ArrayList<TrendPoint> trends = this.detectTrends(shortAv, longAv);
-		System.out.println(trends);
-		
-		return trends;
+		System.out.println("\nTrends:");
+		tempTrend = this.detectTrends(shortAvTemp, longAvTemp);
+		windTrend = this.detectTrends(shortAvWind, longAvWind);
+		System.out.println("Temp:");
+		System.out.println(tempTrend);
+		System.out.println("Wind");
+		System.out.println(windTrend);
 	}
 	
-	private ArrayList<Double> average(ArrayList<TimeSerie> ts, int averageSize){
+	private ArrayList<Double> averageTemp(ArrayList<TimeSerie> ts, int averageSize){
 		ArrayList<Double> result = new ArrayList<Double>();
 		
 		//Iterate for each measure point
@@ -42,18 +54,39 @@ public class MovingAverage {
 			//Take the data for this point
 			double tempResult = 0;
 			int t;
-//			System.out.print("#" + i + ": ");
 			for(t = 0; t < averageSize; t++){
 				//Check if we out of bounds in the main arrary
 				if(i - t >= 0){
-//					System.out.print(i-t + ", ");
 					tempResult += ts.get(i-t).getT();
 				} 
 				else {
 					break;
 				}
 			}
-//			System.out.println();
+			//Add the result to the main array
+			result.add(i, (tempResult/t));
+		}
+		
+		return result;
+	}
+	
+	private ArrayList<Double> averageWind(ArrayList<TimeSerie> ts, int averageSize){
+		ArrayList<Double> result = new ArrayList<Double>();
+		
+		//Iterate for each measure point
+		for(int i = 0; i < ts.size(); i++){
+			//Take the data for this point
+			double tempResult = 0;
+			int t;
+			for(t = 0; t < averageSize; t++){
+				//Check if we out of bounds in the main arrary
+				if(i - t >= 0){
+					tempResult += ts.get(i-t).getT();
+				} 
+				else {
+					break;
+				}
+			}
 			//Add the result to the main array
 			result.add(i, (tempResult/t));
 		}

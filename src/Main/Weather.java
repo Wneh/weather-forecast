@@ -22,10 +22,10 @@ public class Weather {
 		
 		MovingAverage ma = new MovingAverage();
 		
-		ArrayList<TrendPoint> trends = ma.calculate(wd);
+		ma.calculate(wd);
 		
 		//Generate a forecast
-		Basic b = new Basic(wd,trends);
+		Basic b = new Basic(wd,ma.tempTrend);
 		
 		System.out.println("");
 		
