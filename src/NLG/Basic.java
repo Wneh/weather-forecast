@@ -50,6 +50,23 @@ public class Basic {
 		
 		TimeSerie first = this.wd.getTimeseries().get(0);
 		
+		sb.append("At ").append(first.getClockTime()).append(" o'clock we will have a temperature of ").append(first.getT()).append(" ° C");
+		//Add if it will increase or decrease in temperature
+		if(firstTrend.getTrend() == TrendPoint.Trend.POSITIVE){
+			int maxMinTrendIndex = wd.getMaxMinTempTrendIndex(true,0, firstTrend.getIndex());
+			sb.append(" steady rising until about ").append(wd.getTimeseries().get(maxMinTrendIndex).getClockTime())
+			.append(" o'clock where it will reach it's maximum temperature, about ")
+			.append(wd.getTimeseries().get(maxMinTrendIndex).getT())
+			.append(" ° C.");	
+		}
+		else {
+			int maxMinTrendIndex = wd.getMaxMinTempTrendIndex(true,0, firstTrend.getIndex());
+			sb.append(" slowly decreasing until about ").append(wd.getTimeseries().get(maxMinTrendIndex).getClockTime())
+			.append(" o'clock where it will reach it's lowest temperature, about ")
+			.append(wd.getTimeseries().get(maxMinTrendIndex).getT())
+			.append(" ° C.");	
+		}
+		
 		return sb.toString();
 	}
 }
