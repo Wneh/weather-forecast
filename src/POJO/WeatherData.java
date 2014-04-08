@@ -17,7 +17,7 @@ public class WeatherData {
 	}
 	
 	public int getMaxMinTempTrendIndex(boolean max,int start,int stop){
-		double currentMax = 0;
+		double currentMax = timeseries.get(start).getT();
 		int index = 0;
 		for(int i = start; i <= stop; i++){
 			if(max){
