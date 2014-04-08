@@ -21,12 +21,12 @@ public class WeatherData {
 		int index = 0;
 		for(int i = start; i <= stop; i++){
 			if(max){
-				if(Math.max(currentMax, timeseries.get(i).getT()) > currentMax){
+				if(Math.max(currentMax, timeseries.get(i).getT()) >= currentMax){
 					currentMax = timeseries.get(i).getT();
 					index = i;
 				}
 			} else {
-				if(Math.min(currentMax, timeseries.get(i).getT()) < currentMax){
+				if(Math.min(currentMax, timeseries.get(i).getT()) <= currentMax){
 					currentMax = timeseries.get(i).getT();
 					index = i;
 				}
