@@ -25,11 +25,11 @@ public class Weather {
 		ma.calculate(wd);
 		
 		//Generate a forecast
-		Basic b = new Basic(wd,ma.tempTrend);
+		Basic b = new Basic(wd,ma.tempTrend,ma.windTrend);
 		
 		System.out.println("");
 		
-		System.out.println(b.generateSentence());
+		System.out.println(b.generateSentenceBasic());
 		
 		//Create a chart for some visial feedback
         final Chart demo = new Chart("Weather Forecast",wd);
