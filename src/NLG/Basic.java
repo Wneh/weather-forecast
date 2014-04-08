@@ -43,4 +43,13 @@ public class Basic {
 		}
 		return sb.toString();		
 	}
+	
+	public String generateSentenceAdvanced(){
+		StringBuilder sb = new StringBuilder();
+		TrendPoint firstTrend = this.trends.get(0);
+		
+		TimeSerie first = this.wd.getTimeseries().get(0);
+		
+		return sb.toString();
+	}
 }

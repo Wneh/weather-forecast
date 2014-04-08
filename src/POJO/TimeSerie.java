@@ -42,6 +42,33 @@ public class TimeSerie {
 		return result;
 	}
 	
+	public String getWindDirection(){
+		double wd = this.getWd();
+		String result = "";
+		
+		if(wd > 337.5 && wd <= 22.5){
+			result = "north";
+		} else if(wd > 22.5 && wd <= 67.5){
+			result = "northeast";
+		} else if(wd > 67.5 && wd <= 112.5){
+			result = "east";
+		} else if(wd > 112.5 && wd <= 157.5){
+			result = "southeast";
+		} else if(wd > 157.5 && wd <= 202.5){
+			result = "south";
+		} else if(wd > 202.5 && wd <= 247.5){
+			result = "southwest";
+		} else if(wd > 247.5 && wd <= 295.5){
+			result = "west";
+		} else if(wd > 295.5 && wd <= 337.5){
+			result = "northwest";
+		} else {
+			result ="No wind direction";
+		}
+				
+		return result;	
+	}
+	
 	public Calendar getValidTime() {
 		return validTime;
 	}
