@@ -53,7 +53,7 @@ public class Basic {
 		TimeSerie first = this.wd.getTimeseries().get(0);
 		
 		//sb.append("At ").append(first.getClockTime()).append(" o'clock we will have a temperature of ").append(first.getT()).append(" ° C");
-		sb.append("At ").append(first.getClockTime()).append(" o'clock this ").append(first.getDayZone()).append(" we will se wind speeds of up to ")
+		sb.append("At ").append(first.getClockTime()).append(" o'clock this ").append(first.getDayZone()).append(" we'll see wind speeds of up to ")
 		.append(first.getWs()).append(" m/s blowing in ").append(first.getWindDirection()).append(" direction,");
 		//Add if it will increase or decrease in temperature
 		int maxMinTrendIndex;
