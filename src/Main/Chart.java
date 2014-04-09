@@ -97,6 +97,7 @@ public class Chart extends ApplicationFrame {
     	
     	
     	final XYSeries series1 = new XYSeries("Temperature");
+    	final XYSeries series2 = new XYSeries("Wind speed");
     	
     	TimeSerie first = wd.getTimeseries().get(0);
     	
@@ -105,10 +106,12 @@ public class Chart extends ApplicationFrame {
     	for(int i = 0; i < wd.getTimeseries().size(); i++){
     		TimeSerie temp = wd.getTimeseries().get(i);
     		series1.add(offset+i,temp.getT());
+    		series2.add(offset+i,temp.getWs());
     	}
         
         final XYSeriesCollection dataset = new XYSeriesCollection();
         dataset.addSeries(series1);
+        dataset.addSeries(series2);
 
         return dataset;
         
