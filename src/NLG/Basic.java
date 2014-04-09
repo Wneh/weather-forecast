@@ -9,16 +9,18 @@ import POJO.WeatherData;
 public class Basic {
 
 	private WeatherData wd;
-	private ArrayList<TrendPoint> trends;
+	private ArrayList<TrendPoint> trendsTemp;
+	private ArrayList<TrendPoint> trendsWind;
 	
-	public Basic(WeatherData wd, ArrayList<TrendPoint> trends, ArrayList<TrendPoint> windTrend){
+	public Basic(WeatherData wd, ArrayList<TrendPoint> trendsTemp, ArrayList<TrendPoint> windTrend){
 		this.wd = wd;
-		this.trends = trends;
+		this.trendsTemp = trendsTemp;
+		this.trendsWind = windTrend;		
 	}
 	
-	public String generateSentenceBasic(){
+	public String generateSentenceTemp(){
 		StringBuilder sb = new StringBuilder();
-		TrendPoint firstTrend = this.trends.get(0);
+		TrendPoint firstTrend = this.trendsTemp.get(0);
 		
 		TimeSerie first = this.wd.getTimeseries().get(0);
 		
@@ -44,28 +46,28 @@ public class Basic {
 		return sb.toString();		
 	}
 	
-	public String generateSentenceAdvanced(){
+	public String generateSentenceWind(){
 		StringBuilder sb = new StringBuilder();
-		TrendPoint firstTrend = this.trends.get(0);
+		TrendPoint firstTrend = this.trendsWind.get(0);
 		
 		TimeSerie first = this.wd.getTimeseries().get(0);
 		
-		sb.append("At ").append(first.getClockTime()).append(" o'clock we will have a temperature of ").append(first.getT()).append(" ° C");
+		//sb.append("At ").append(first.getClockTime()).append(" o'clock we will have a temperature of ").append(first.getT()).append(" ° C");
+		sb.append("At ").append(first.getClockTime()).append(" o'clock this ").append(first.getDayZone()).append(" we will se wind speeds of up to ")
+		.append(first.getWs()).append(" m/s blowing in ").append(first.getWindDirection()).append(" direction,");
 		//Add if it will increase or decrease in temperature
+		int maxMinTrendIndex;
 		if(firstTrend.getTrend() == TrendPoint.Trend.POSITIVE){
-			int maxMinTrendIndex = wd.getMaxMinTempTrendIndex(true,0, firstTrend.getIndex());
-			sb.append(" steady rising until about ").append(wd.getTimeseries().get(maxMinTrendIndex).getClockTime())
-			.append(" o'clock where it will reach it's maximum temperature, about ")
-			.append(wd.getTimeseries().get(maxMinTrendIndex).getT())
-			.append(" ° C.");	
+			maxMinTrendIndex = wd.getMaxMinTempTrendIndex(true,0, firstTrend.getIndex());
+			sb.append("the wind speed will then build up unti about ").append(wd.getTimeseries().get(maxMinTrendIndex).getClockTime()).append(" o'clock");
 		}
 		else {
-			int maxMinTrendIndex = wd.getMaxMinTempTrendIndex(true,0, firstTrend.getIndex());
-			sb.append(" slowly decreasing until about ").append(wd.getTimeseries().get(maxMinTrendIndex).getClockTime())
-			.append(" o'clock where it will reach it's lowest temperature, about ")
-			.append(wd.getTimeseries().get(maxMinTrendIndex).getT())
-			.append(" ° C.");	
+			maxMinTrendIndex = wd.getMaxMinTempTrendIndex(true,0, firstTrend.getIndex());
+			sb.append("the wind speed will then build up unti about ").append(wd.getTimeseries().get(maxMinTrendIndex).getClockTime()).append(" o'clock");	
 		}
+		sb.append(" with speeds of up to ").append(wd.getTimeseries().get(maxMinTrendIndex).getWs()).append(" m/s blowing in the ").append(wd.getTimeseries().get(maxMinTrendIndex).getWindDirection())
+		.append(" direction");
+		
 		
 		return sb.toString();
 	}

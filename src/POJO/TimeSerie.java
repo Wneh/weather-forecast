@@ -69,7 +69,7 @@ public class TimeSerie {
 		return result;	
 	}
 	
-	public String dayZone(){
+	public String getDayZone(){
 		int hour = this.validTime.get(Calendar.HOUR_OF_DAY)+2;
 		String result;
 		

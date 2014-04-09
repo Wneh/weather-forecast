@@ -29,7 +29,9 @@ public class Weather {
 		
 		System.out.println("");
 		
-		System.out.println(b.generateSentenceBasic());
+		System.out.println(b.generateSentenceTemp());
+		System.out.println("");
+		System.out.println(b.generateSentenceWind());
 		
 		//Create a chart for some visial feedback
         final Chart demo = new Chart("Weather Forecast",wd);
