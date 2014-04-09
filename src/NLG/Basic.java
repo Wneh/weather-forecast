@@ -59,11 +59,11 @@ public class Basic {
 		int maxMinTrendIndex;
 		if(firstTrend.getTrend() == TrendPoint.Trend.POSITIVE){
 			maxMinTrendIndex = wd.getMaxMinTempTrendIndex(true,0, firstTrend.getIndex());
-			sb.append("the wind speed will then build up unti about ").append(wd.getTimeseries().get(maxMinTrendIndex).getClockTime()).append(" o'clock");
+			sb.append("the wind speed will then build up until about ").append(wd.getTimeseries().get(maxMinTrendIndex).getClockTime()).append(" o'clock");
 		}
 		else {
 			maxMinTrendIndex = wd.getMaxMinTempTrendIndex(true,0, firstTrend.getIndex());
-			sb.append("the wind speed will then build up unti about ").append(wd.getTimeseries().get(maxMinTrendIndex).getClockTime()).append(" o'clock");	
+			sb.append("the wind speed will then build up until about ").append(wd.getTimeseries().get(maxMinTrendIndex).getClockTime()).append(" o'clock");	
 		}
 		sb.append(" with speeds of up to ").append(wd.getTimeseries().get(maxMinTrendIndex).getWs()).append(" m/s blowing in the ").append(wd.getTimeseries().get(maxMinTrendIndex).getWindDirection())
 		.append(" direction");
